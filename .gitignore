@@ -1,0 +1,20 @@
+# Mac Os X stuff
+.DS_STORE
+
+# Odoo git clone
+odoo-11.0/
+
+# Distribution / packaging
+.Python
+lib/
+
+# Virtualen stuff
+bin/
+include/
+share/
+pip-selfcheck.json
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class

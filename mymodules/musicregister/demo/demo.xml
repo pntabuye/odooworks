@@ -1,15 +1,18 @@
 <odoo>
     <data>
-        <!--  -->
-        <!--   <record id="object0" model="musicregister.musicregister"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--     <field name="value">0</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object1" model="musicregister.musicregister"> -->
-        <!--     <field name="name">Object 1</field> -->
-        <!--     <field name="value">10</field> -->
-        <!--   </record> -->
+        <record id="object0" model="musicregister.label">
+          <field name="name">TOP 5 SAI</field>
+          <field name="description">Rwanda based music label for local prodcut.
+Headquarters in Musanze and secondary studio in Kigali.
+          </field>
+        </record>
+        <record id="object1" model="musicregister.label">
+           <field name="name">PlanB Music</field>
+           <field name="descritpion">Belgium based brand for indie products.
+Headquarters in Brussels. Main recoding studio Studio Air in Berchem
+with two Home Studion in 1000 Brussels and Anderlecht.
+</field>
+        </record>
         <!--  -->
         <!--   <record id="object2" model="musicregister.musicregister"> -->
         <!--     <field name="name">Object 2</field> -->

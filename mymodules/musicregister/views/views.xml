@@ -41,9 +41,9 @@
     -->
 
     <!-- Top menu item -->
-    <!--
-    <menuitem name="musicregister" id="musicregister.menu_root"/>
-    -->
+    <menuitem name="musicregister"
+      id="musicregister.menu_root"
+      web_icon="musicregister,static/description/icon.png"/>
     <!-- menu categories -->
     <!--
     <menuitem name="Menu 1" id="musicregister.menu_1" parent="musicregister.menu_root"/>

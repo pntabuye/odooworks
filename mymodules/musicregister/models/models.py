@@ -2,13 +2,14 @@
 
 from odoo import models, fields, api
 
-# class musicregister(models.Model):
-#     _name = 'musicregister.musicregister'
 
-#     name = fields.Char()
+class Label(models.Model):
+    _name = 'musicregister.label'
+
+    name = fields.Char(required=True)
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
+    description = fields.Text()
 #
 #     @api.depends('value')
 #     def _value_pc(self):

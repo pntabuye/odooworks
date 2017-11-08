@@ -1,16 +1,70 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import (
+    models,
+    fields,
+    api
+)
 
 
-class Label(models.Model):
-    _name = 'musicregister.label'
+class MRArtist(models.Model):
+    _name = 'musicregister.artist'
 
-    name = fields.Char(required=True)
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-    description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+    name = fields.Char('Name', required=True)
+    description = fields.Text('Description')
+
+
+class MRAlbum(models.Model):
+    """
+    An album available for distribution is composed of on or more songs.
+    When creating an album available songs are made available.
+    """
+    _name = 'musicregister.album'
+    _description = 'musicregister album'
+    _order = 'date desc'
+
+    name = fields.Char('Title', required=True)
+    datf = fields.Date('Date', required=True, readonly=True,
+                       default=fields.Date.context_today)
+    album_entry_ids = fields.One2many(
+         'musicregister.album.entry',
+         'album_id',
+         'Songs',
+         readonly=False,
+         copy=True
+    )
+
+
+class MRAlbumEntry(models.Model):
+    _name = 'musicregister.album.entry'
+    _description = 'musicregister album entry'
+
+    name = fields.Char(related='song_id.name', string='Song Title',
+                       readonly=False)
+    album_id = fields.Many2one('musicregister.album', 'Album',
+                               ondelete='cascade', required=True)
+    song_id = fields.Many2one('musicregister.song', 'Song', required=True)
+    genre_id = fields.Many2one('musicregister.song.genre', string='Song Genre',
+                               related='song_id.genre_id',
+                               readonly=False, store=True)
+    extras = fields.Text('Extras')
+
+
+class MRSong(models.Model):
+    """ Song available for compilation. """
+    _name = 'musicregister.song'
+    _description = 'musicregister song'
+
+    name = fields.Char('Title', required=True)
+    genre_id = fields.Many2one('musicregister.song.genre',
+                               'Genre',
+                               required=True)
+    description = fields.Text('Description')
+
+
+class MRSongGenre(models.Model):
+    """ Music genres such as Rap, R&B , Afrobeat, Gakondo, ... """
+    _name = 'musicregister.song.genre'
+    _description = 'musicregister song genre'
+
+    name = fields.Char('Genre', required=True)

@@ -4,14 +4,13 @@
     'summary': 'Manage a record company music portfolio',
     'description': """
         Manage record company:
-        - sub labels,
         - released albums,
         - released singles
         - signed artists
     """,
     'author': 'Paul Ntabuye Butera',
     'website': "http://www.planbweb.com",
-    'category': 'Uncategorized',
+    'category': 'Project',
     'version': '0.1',
     'depends': ['base'],
     'installable': True,

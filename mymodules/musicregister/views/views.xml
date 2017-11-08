@@ -4,18 +4,9 @@
     <!-- menuitem id="musicregister.menu_root" name="musicregister" web_icon="musicregister,static/description/icon.png"/ -->
     <menuitem id='menu_mregister' name='Music Register' sequence="105" web_icon="mregister,static/description/icon.png"/>
     <menuitem name="My Label" parent="menu_mregister" id="menu_mregister_title" sequence="50" />
-    <menuitem name="Manager" parent="menu_mregister" id="menu_mregister_admin" sequence="51" />
     <menuitem name="Configuration" parent="menu_mregister" id="menu_mregister_config" sequence="53" />
 
     <!--View Search to group/filter by Supplier and time-->
-
-    <!-- Actions for artists -->
-    <record id="mregister_artist_action_form" model="ir.actions.act_window">
-        <field name="name">New Artist</field>
-        <field name="res_model">musicregister.artist</field>
-        <field name="view_mode">form</field>
-    </record>
-    <menuitem name="New Artist" parent="menu_mregister_title" id="mregister_artist_menu_form" action="mregister_artist_action_form"/>
 
     <!-- Actions for albums -->
     <record id="mregister_album_action_form" model="ir.actions.act_window">
@@ -23,7 +14,7 @@
         <field name="res_model">musicregister.album</field>
         <field name="view_mode">form</field>
     </record>
-    <menuitem name="New Album" parent="menu_mregister_title" id="mregister_album_menu_form" action="mregister_album_action_form"/>
+    <menuitem name="New Album" parent="menu_mregister_title" id="mregister_album_menu_form" action="mregister_album_action_form" sequence="1"/>
 
     <record id="musicregister_album_entry_action" model="ir.actions.act_window">
         <field name="name">Your Albums</field>
@@ -87,6 +78,8 @@
         <field name="model">musicregister.album.entry</field>
         <field name="arch" type="xml">
             <tree string="Albums Tree" create="false" edit="false">
+                <field name="artist"/>
+                <field name="title"/>
                 <field name="song_id"/>
                 <field name="extras"/>
             </tree>
@@ -98,6 +91,8 @@
         <field name="model">musicregister.album.entry</field>
         <field name="arch" type="xml">
           <kanban>
+            <field name="artist"/>
+            <field name="title"/>
             <field name='song_id' />
             <field name='extras' />
             <templates>
@@ -105,7 +100,9 @@
                   <div class="oe_kanban_global_click">
                       <div class="o_kanban_record_top">
                           <div class="o_kanban_record_headings">
-                              <strong class="o_kanban_record_title"><field name="song_id"/></strong>
+                              <strong class="o_kanban_record_artist"><field name="artist"/></strong>
+                              <strong class="o_kanban_record_title"><field name="title"/></strong>
+                              <strong class="o_kanban_record_song_id"><field name="song_id"/></strong>
                           </div>
                       </div>
                       <div>
@@ -124,7 +121,9 @@
         <field name="model">musicregister.album</field>
         <field name="arch" type="xml">
             <tree string="Albums Tree">
-                <field name="datf"/>
+                <field name="artist"/>
+                <field name="title"/>
+                <field name="date"/>
                 <field name="album_entry_ids"/>
             </tree>
         </field>
@@ -138,7 +137,9 @@
                 <sheet>
                     <group>
                       <group>
-                        <field name='datf'/>
+                        <field name="artist"/>
+                        <field name="title"/>
+                        <field name='date'/>
                       </group>
                     </group>
                     <separator string='Select your album'/>

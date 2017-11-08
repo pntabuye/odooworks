@@ -23,8 +23,9 @@ class MRAlbum(models.Model):
     _description = 'musicregister album'
     _order = 'date desc'
 
-    name = fields.Char('Title', required=True)
-    datf = fields.Date('Date', required=True, readonly=True,
+    artist = fields.Char('Artist', required=True)
+    title = fields.Char('Title', required=True)
+    date = fields.Date('Date', required=True, readonly=False,
                        default=fields.Date.context_today)
     album_entry_ids = fields.One2many(
          'musicregister.album.entry',
@@ -42,7 +43,14 @@ class MRAlbumEntry(models.Model):
     name = fields.Char(related='song_id.name', string='Song Title',
                        readonly=False)
     album_id = fields.Many2one('musicregister.album', 'Album',
-                               ondelete='cascade', required=True)
+                               ondelete='cascade', required=True,
+                               readonly=True)
+    title = fields.Char(related='album_id.title',
+                        string='Album Title',
+                        readonly=True)
+    artist = fields.Char(related='album_id.artist',
+                         string='Artist',
+                         readonly=True)
     song_id = fields.Many2one('musicregister.song', 'Song', required=True)
     genre_id = fields.Many2one('musicregister.song.genre', string='Song Genre',
                                related='song_id.genre_id',

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="cdw_archives_view_form" model="ir.ui.view">
+        <field name="name">Archives listing Form</field>
+        <field name="model">cdw.archives</field>
+        <field name="arch" type="html">
+            <form string="Archives Form">
+                <field name="name"/>
+                <field name="archive"/>
+                <field name="webexpress" readonly="1"/>
+                <div>
+                    <iframe src="http://37.187.240.107/columbusdw/index.htm?username=salesforce&amp;autologin=1&amp;showtoolbars=1&amp;showtree=0&amp;dockedview=1&amp;startuppath=documents\phone bills\all documents"
+                            marginwidth="0" marginheight="0" frameborder="no" scrolling="no" style="border-width:0px;"
+                            width="1000" height="600"></iframe>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="cdw_archives_listing_action" model="ir.actions.act_window">
+        <field name="name">Archives</field>
+        <field name="res_model">cdw.archives</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="cdw_archives_view_form"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no archive available today
+                <p></p>
+                To see some documets, check if your archives are available today and that you have configured some
+                documents
+            </p>
+        </field>
+    </record>
+
+</odoo>

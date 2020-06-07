@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "columbus_dw",
+    'name': "Columbus DW for Odoo",
     'summary': """Columbus DW connector for Odoow""",
     'version': '13.0.0.0.1',
     'category': 'Document Management',
@@ -13,9 +13,11 @@
     'depends': [
     ],
     'data': [
-        # 'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/templates.xml',
+        'security/ir.model.access.csv',
+        'views/res_config_settings.xml',
+        'views/columbusdw_archives_views.xml',
+        'views/columbusdw_views.xml',
+        # 'views/columbusdw_templates.xml',
     ],
     'description': """
         This connector allows to connect Columbus DW from Macro4 with Odoo

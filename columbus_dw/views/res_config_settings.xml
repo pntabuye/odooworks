@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.columbus_dw</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Colmbus DW" string="Colmbus DW" data-key="columbus_dw" >
+                    <h2>Columbus DW</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="cdw_inherit_odoo_credentials"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Inherit Odoo Credentials</span>
+                            </div>
+                            <div class="text-muted">
+                                Inherit Odoo User Credentials for Columbus DW connection.
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Manual Connection Settings</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                      aria-label="Values set here are company-specific."
+                                      groups="base.group_multi_company" role="img"/>
+                                <div class="text-muted">
+                                    Connection parameters for reaching the Columbus DW web service.
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt18 row">
+                                        <label for="cdw_xmlapi_baseurl" string="Address"
+                                               class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="cdw_xmlapi_baseurl" attrs="{'readonly': [('cdw_inherit_odoo_credentials', '=', True)]}" />
+                                        <label for="cdw_login" string="Login"
+                                               class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="cdw_login" attrs="{'readonly': [('cdw_inherit_odoo_credentials', '=', True)]}" />
+                                        <label for="cdw_password" string="Password"
+                                               class="col-3 col-lg-3 o_light_label"/>
+                                        <field name="cdw_password" password="true" attrs="{'readonly': [('cdw_inherit_odoo_credentials', '=', True)]}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="columbus_dw_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'columbus_dw'}</field>
+    </record>
+</odoo>

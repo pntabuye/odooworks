@@ -1,0 +1,62 @@
+<odoo>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="columbus_dw.list">
+      <field name="name">columbus_dw list</field>
+      <field name="model">columbus_dw.columbus_dw</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="columbus_dw.action_window">
+      <field name="name">columbus_dw window</field>
+      <field name="res_model">columbus_dw.columbus_dw</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="columbus_dw.action_server">
+      <field name="name">columbus_dw server</field>
+      <field name="model_id" ref="model_columbus_dw_columbus_dw"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem id='menu_cdw' name='Columbus DW' sequence="106"  web_icon="columbus_dw,static/description/icon.png"/>
+
+    <!-- menu categories -->
+    <menuitem name="My Documents"  parent="menu_cdw" id="menu_cdw_title"  sequence="60" />
+    <menuitem name="Manager"       parent="menu_cdw" id="menu_cdw_admin"  sequence="61" />
+    <menuitem name="Configuration" parent="menu_cdw" id="menu_cdw_config" sequence="63" />
+
+    <!-- actions -->
+    <menuitem name="Archives" parent="menu_cdw_title"  id="cdw_express_menu"
+              action="cdw_archives_listing_action" sequence="1"/>
+
+    <!--menuitem name="Settings" parent="menu_cdw_config" id="cdw_settings_menu"
+              action="columbus_dw_config_settings_action" sequence="1"/-->
+<!--
+    <menuitem name="List" id="columbus_dw.menu_1_list" parent="columbus_dw.menu_1"
+              action="columbus_dw.action_window"/>
+    <menuitem name="Server to list" id="columbus_dw" parent="columbus_dw.menu_2"
+              action="columbus_dw.action_server"/>
+-->
+</odoo>
